@@ -1,0 +1,20 @@
+
+.bar{
+    background-color: blueviolet;
+}
+
+.rightSide{
+    text-align:right;
+}
+
+.topButton{
+    color: white;
+    padding: 0;
+    border: none;
+    background: none;
+    margin : 10px;
+}
+
+.welcomeTxt{
+    color: white;
+}
