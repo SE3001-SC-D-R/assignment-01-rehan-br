@@ -1,23 +1,29 @@
-/**
- * This is a basic starting point of the assignment
- * Modify the code according to your own needs and requirements
- */
-
-//const express = require('express')
-import express from 'express'; // <-- Module Style import
+import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors'; //used if we want to use cross domain
 import mongoose from 'mongoose';
-mongoose.connect("mongodb+srv://rehanbr:nothing123@cluster0.1f7glet.mongodb.net/?retryWrites=true&w=majority");
+
+import env from 'dotenv';
+env.config();
+const port = process.env.PORT || 3001;
 
 // Importing user route
-import router from './routes/users.js';
-// const router = require('router')
-
-// const bodyParser = require('body-parser')
+import router from './routes/admin.js';
 
 const app = express()
-const port = 3001
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser:true});
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log("Connected to DB boyyyyyy");
+})
 
 app.use(bodyParser.json())
+app.use(cors());
+app.use(express.json());
 // Adding a Router
-app.use('/users', router);
+app.use('/admin.js', router);
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
