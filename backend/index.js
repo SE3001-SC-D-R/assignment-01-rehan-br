@@ -22,8 +22,8 @@ app.use(bodyParser.json())
 app.use(cors());
 app.use(express.json());
 // Adding a Router
-app.use('/admin', admin);
-app.get("/", (res, req) => {
+app.use("/admin", admin);
+app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
