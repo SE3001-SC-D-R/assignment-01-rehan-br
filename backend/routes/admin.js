@@ -1,11 +1,11 @@
-import router from 'express';
+import express from 'express';
 import Course from '../models/course.js';
 import studentCourse from '../models/studentCourse.js';
 
 //add course
 
-router.Router();
-router.Router('/add').post((req, res) => {
+let router = express.Router();
+router.route("/add").post((req, res) => {
 
     const {courseIdI, nameI, creditHoursI} = req.body;
 
@@ -25,7 +25,7 @@ router.Router('/add').post((req, res) => {
 
 //edit course
 
-router.Router('/update/:Id').post((req, res) =>{
+router.route("/update/:Id").post((req, res) =>{
     Course.findById(req.params.Id)
     .then(course => {
         course.courseId = Number(req.body.courseId);
@@ -40,17 +40,15 @@ router.Router('/update/:Id').post((req, res) =>{
 });
 
 //view courses
-router.Router('/viewCourses').get((res, req) => {
-    // Course.find({}, (err, result) => {
-    //     if(err){
-    //         res.json(err);
-    //     } else {
-    //         res.json(result);
-    //         res.send();
-    //     }
-    // });
-
-    res.send("chal jao bhai");
+router.route("/viewCourses").get((req, res) => {
+    Course.find({}, (err, result) => {
+        if(err){
+            res.json(err);
+        } else {
+            res.json(result);
+            res.send();
+        }
+    });
 });
 
 export default router;
