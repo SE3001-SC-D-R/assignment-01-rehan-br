@@ -1,8 +1,8 @@
-import './mainPage.css';
+import './coursePage.css';
 import { useState , useEffect} from "react";
 import Axios from "axios";
 
-function MainPage(){
+function CoursePage(){
 
     const [resourceType, setResourceType] = useState('');
   
@@ -16,9 +16,8 @@ function MainPage(){
     return(
         <div>
             <h1 className = "heading">Course List</h1>
-            
         </div>
     );
 }
 
-export default MainPage;
+export default CoursePage;
