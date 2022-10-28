@@ -7,9 +7,11 @@ import studentCourse from '../models/studentCourse.js';
 router.Router();
 router.Router('/add').post((req, res) => {
 
-    const courseId = req.body.Title;
-    const name = req.body.Name;
-    const creditHours = req.body.creditHours;
+    const {courseIdI, nameI, creditHoursI} = req.body;
+
+    const courseId = courseIdI;
+    const name = nameI
+    const creditHours = creditHoursI
     const newCourse = new Course((
         courseId,
         name,
@@ -35,4 +37,20 @@ router.Router('/update/:Id').post((req, res) =>{
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
-})
+});
+
+//view courses
+router.Router('/viewCourses').get((res, req) => {
+    // Course.find({}, (err, result) => {
+    //     if(err){
+    //         res.json(err);
+    //     } else {
+    //         res.json(result);
+    //         res.send();
+    //     }
+    // });
+
+    res.send("chal jao bhai");
+});
+
+export default router;
