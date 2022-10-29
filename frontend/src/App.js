@@ -9,7 +9,9 @@ function App() {
     <div className='topBar'>
       <TopBar name = "Rehan Bashir" />
       <div className='bar2'>
-         <button className = "viewButton" onClick = {<CoursePage />}>View Courses</button>
+         <button className = "button" onClick = {<CoursePage />}>View Courses</button>
+         <button className = "button">Add Course</button>
+         <button className = "button">Delete Course</button>
       </div>
     </div>
   );

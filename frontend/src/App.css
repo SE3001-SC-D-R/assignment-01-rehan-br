@@ -23,13 +23,17 @@
   color: #61dafb;
 }
 
-.viewButton{
+.button{
   color:  black;
   padding: 0;
   border: none;
   background: none;
   margin : 10px;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.button:hover{
+  text-decoration : underline;
 }
 
 @keyframes App-logo-spin {

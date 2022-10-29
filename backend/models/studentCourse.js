@@ -5,10 +5,16 @@ const Schema = mongoose.Schema;
 
 const studentCourseSchema = new Schema(
     {
-        course: {
-            type : Schema.Types.ObjectId,
-            ref : 'Course',
+        courseId: {
+            type : String,
+            required : true,
+            unique: true
         },
+        rollNumber: {
+            type: String,
+            required: true,
+            unique: true
+        }
     },
     {
         timestamps : true,
