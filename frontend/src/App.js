@@ -1,19 +1,18 @@
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import React from 'react';
-import TopBar from './Components/Navbar.js';
-import CoursePage from './Components/coursePage.js';
+import CoursePage from './Components/coursePage';
+import HomePage from './Components/homePage';
 
 function App() {
 
   return (
-    <div className='topBar'>
-      <TopBar name = "Rehan Bashir" />
-      <div className='bar2'>
-         <button className = "button" onClick = {<CoursePage />}>View Courses</button>
-         <button className = "button">Add Course</button>
-         <button className = "button">Delete Course</button>
-      </div>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<HomePage />}/>
+      <Route path='/viewCourses' element={<CoursePage />}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

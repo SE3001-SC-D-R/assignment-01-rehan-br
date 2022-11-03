@@ -1,4 +1,6 @@
+import { Axios } from 'axios';
 import express from 'express';
+import mongoose from 'mongoose';
 import Course from '../models/course.js';
 import studentCourse from '../models/studentCourse.js';
 
@@ -37,6 +39,24 @@ router.route("/update/:Id").post((req, res) =>{
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//Delete Course
+router.route("/deleteCourse").delete(async (req, res) => {
+
+    const { id } = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Invalid Course ID'});
+    }
+
+    const course = await Course.findOneAndDelete({_id: id});
+    if(course){
+        res.status(200).json(course);
+    }
+    else{
+        res.status(404).json({error: 'No such Course'});
+    }
+    
 });
 
 //view courses
