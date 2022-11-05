@@ -1,4 +1,3 @@
-import { Axios } from 'axios';
 import express from 'express';
 import mongoose from 'mongoose';
 import Course from '../models/course.js';
@@ -7,18 +6,22 @@ import studentCourse from '../models/studentCourse.js';
 //add course
 
 let router = express.Router();
-router.route("/add").post((req, res) => {
+router.route("/add").post(async (req, res) => {
 
-    const {courseIdI, nameI, creditHoursI} = req.body;
+    const courseId = req.body.courseId;
+    const name = req.body.name;
+    const creditHours = req.body.creditHours;
 
-    const courseId = courseIdI;
-    const name = nameI
-    const creditHours = creditHoursI
-    const newCourse = new Course((
+    console.log(courseId, name, creditHours);
+    console.log("Course Attributes set.. Adding course");
+
+    const newCourse = await Course.create({
         courseId,
         name,
         creditHours
-    ));
+    });
+    
+    console.log("Course Set. Saving..");
 
     newCourse.save()
     .then(() => res.json('Course Added!'))
@@ -29,12 +32,13 @@ router.route("/add").post((req, res) => {
 
 router.route("/update/:Id").post((req, res) =>{
     Course.findById(req.params.Id)
-    .then(course => {
-        course.courseId = Number(req.body.courseId);
-        course.name = req.body.Name;
-        course.creditHours = req.body.creditHours;
+    .then(Course => {
+        Course.courseId = Number(req.body.courseId);
+        Course.name = req.body.Name;
+        Course.creditHours = req.body.creditHours;
 
-        course.save()
+
+        Course.save()
         .then(() => res.json('Course Updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
@@ -66,7 +70,6 @@ router.route("/viewCourses").get((req, res) => {
             res.json(err);
         } else {
             res.json(result);
-            res.send();
         }
     });
 });

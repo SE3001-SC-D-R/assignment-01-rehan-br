@@ -12,6 +12,8 @@ function CoursePage(){
         });
     }, []);
 
+    console.log(listOfCourses);
+
     return(
      <div>
         <NavBar />

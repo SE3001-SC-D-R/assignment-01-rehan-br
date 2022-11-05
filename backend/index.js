@@ -18,6 +18,7 @@ connection.once('open', () => {
     console.log("Connected to DB!");
 })
 
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(cors());
 app.use(express.json());

@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 
 const courseSchema = new Schema(
     {
-        courseId : {
+        courseId: {
             type: String,
             required: true,
         },
-        name : {
+        name: {
             type: String,
             required : true,
         },
-        creditHours : {
+        creditHours: {
             type : Number,
             required : true
         }
