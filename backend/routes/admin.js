@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Course from '../models/course.js';
-import studentCourse from '../models/studentCourse.js';
 
 //add course
 
@@ -30,25 +29,34 @@ router.route("/add").post(async (req, res) => {
 
 //edit course
 
-router.route("/update/:Id").post((req, res) =>{
-    Course.findById(req.params.Id)
-    .then(Course => {
-        Course.courseId = Number(req.body.courseId);
-        Course.name = req.body.Name;
-        Course.creditHours = req.body.creditHours;
+router.route("/update/:id").post(async (req, res) =>{
+    const {id} = req.params;
 
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: "Invalid ID"});
+    }
 
-        Course.save()
-        .then(() => res.json('Course Updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
+    const course = await Course.findOneAndUpdate(
+        {courseId : id},
+        {
+            ...req.body,
+        }
+    );
+
+    if(course){
+        res.status(200).json(course);
+    }
+    else{
+        res.status(404).json({error: "Course not found"});
+    }
 });
 
 //Delete Course
-router.route("/deleteCourse").delete(async (req, res) => {
+router.route("/deleteCourse/:id").delete(async (req, res) => {
 
     const { id } = req.params;
+
+    console.log(id);
     if(!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({error: 'Invalid Course ID'});
     }

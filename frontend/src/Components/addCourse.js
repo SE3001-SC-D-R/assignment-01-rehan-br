@@ -2,11 +2,12 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Navbar from '../Components/Navbar';
+import './addCourse.css';
 
 function addCourse(){
-    const [courseId, setcourseId] = useState("");
-    const [name, setname] = useState("");
-    const [creditHours, setcredithours] = useState("");
+    const [courseId, setcourseId] = useState("")
+    const [name, setname] = useState("")
+    const [creditHours, setcredithours] = useState("")
     
     const createCourse = () => {
         axios.post("http://localhost:3001/admin/add", {
@@ -23,10 +24,10 @@ function addCourse(){
             <Navbar/>
             <div>
                 <h2>
-                    Add Student
+                    Add Course
                 </h2>
                 <div className = 'form'>
-                    <label for='chk' aria-hidden="true">Student Form</label>
+                    <label for='chk' aria-hidden="true">Enter Course Details</label>
                     <tr>
                         <td>
                             Course Code

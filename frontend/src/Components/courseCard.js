@@ -6,11 +6,11 @@ import axios from 'axios';
 
 const CourseCard = ({Courses}) => {
     const handleDelete = async () => {
-        await axios
-        .delete(`http://localhost:3001/delete/${Courses._courseId}`)
+        await axios.delete(`http://localhost:3001/admin/deleteCourse/${Courses._id}`)
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
         console.log("Course Deleted");
+        window.location.reload();
     };
 
     return(
