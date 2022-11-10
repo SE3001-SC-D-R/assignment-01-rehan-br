@@ -2,12 +2,12 @@ import './coursePage.css';
 import NavBar from './Navbar';
 import { useState , useEffect} from "react";
 import Axios from "axios";
-import CourseCard from './courseCard';
+import CourseCard from './stdCourseCard';
 
 function CoursePage(){
     const [listOfCourses, setListOfCourses] = useState([]);
     useEffect(() =>{
-        Axios.get("http://localhost:3001/admin/viewCourses").then((response) => {
+        Axios.get("http://localhost:3001/student/viewCourses").then((response) => {
             setListOfCourses(response.data);
         });
     }, []);
@@ -16,9 +16,8 @@ function CoursePage(){
 
     return(
      <div>
-        <NavBar />
         <div classname='mains'>
-            <h2>Course List</h2>
+            <h2>Courses</h2>
             <div classname = 'form'>
                 <label for="chk" aria-hidden="true">Courses</label>
 

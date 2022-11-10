@@ -9,6 +9,7 @@ function addCourse(){
     const [name, setname] = useState("")
     const [creditHours, setcredithours] = useState("")
     
+
     const createCourse = () => {
         axios.post("http://localhost:3001/admin/add", {
             courseId,
@@ -59,7 +60,7 @@ function addCourse(){
                         </td>
                     </tr>
                     <div>
-                        <a href='/viewCourses'>
+                        <a href='/admin/viewCourses'>
                             <button onClick={createCourse}>Add</button>
                         </a>
                     </div>

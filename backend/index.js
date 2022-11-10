@@ -9,6 +9,7 @@ const port = process.env.PORT || 3001;
 
 // Importing user route
 import admin from './routes/admin.js';
+import student from './routes/student.js';
 
 const app = express()
 const uri = process.env.ATLAS_URI;
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // Adding a Router
 app.use("/admin", admin);
+app.use("/student", student);
 app.get("/", (req, res) => {
 });
 

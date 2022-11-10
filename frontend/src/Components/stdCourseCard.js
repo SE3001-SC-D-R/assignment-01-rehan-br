@@ -1,26 +1,10 @@
 import React from 'react';
 import './courseCard.css';
 import {Row, Col} from 'react-bootstrap';
-import {AiOutlineDelete} from 'react-icons/ai';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
-import UpdateCourse from './updateCourse';
 
 const CourseCard = ({Courses}) => {
-    const handleDelete = async () => {
-        await axios.delete(`http://localhost:3001/admin/deleteCourse/${Courses._id}`)
-        .then((response) => console.log(response.data))
-        .catch((error) => console.log(error));
-        console.log("Course Deleted");
-        window.location.reload();
-    };
-
-    const updateCourse = async () =>{
-        console.log("Updating..");
-
-        return(
-        <UpdateCourse Courses = {Courses}/>
-        )
-    }
 
     return(
         <div>
@@ -37,7 +21,7 @@ const CourseCard = ({Courses}) => {
                         <tr>
                             <td>
                                 <strong>
-                                    Course Name: 
+                                    Course Name:
                                 </strong>
                             </td>
                             <td>
@@ -50,7 +34,7 @@ const CourseCard = ({Courses}) => {
                     <Col md="4">
                         <tr>
                             <td>
-                                Credit Hours: 
+                                Credit Hours:
                             </td>
                             <td>
                                 {Courses.creditHours}
@@ -58,12 +42,6 @@ const CourseCard = ({Courses}) => {
                         </tr>
                     </Col>
                 </Row>
-                <button className='handleDelete' onClick={handleDelete}>
-                    <AiOutlineDelete></AiOutlineDelete>
-                </button>
-                <button className='handleUpdate' onClick={updateCourse}>
-                    Update
-                </button>
             </div>
         </div>
     )

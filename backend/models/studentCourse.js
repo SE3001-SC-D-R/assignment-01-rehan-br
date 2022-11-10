@@ -10,7 +10,7 @@ const studentCourseSchema = new Schema(
             required : true,
             unique: true
         },
-        rollNumber: {
+        rollnumber: {
             type: String,
             required: true,
             unique: true

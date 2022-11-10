@@ -18,22 +18,16 @@ function NavBar(){
                                     Home
                                 </li>
                             </NavLink>
-                            <NavLink className='navlink' to='/viewCourses' style={({isActive}) =>
+                            <NavLink className='navlink' to='/admin/viewCourses' style={({isActive}) =>
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
                                 <li>
                                     View Courses
                                 </li>
                             </NavLink>
-                            <NavLink className='navlink' to='/addCourse' style={({isActive}) =>
+                            <NavLink className='navlink' to='/admin/addCourse' style={({isActive}) =>
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
                                 <li>
                                     Add Courses
-                                </li>
-                            </NavLink>
-                            <NavLink className='navlink' to='/updateCourse' style={({isActive}) =>
-                            (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
-                                <li>
-                                    Update Course
                                 </li>
                             </NavLink>
                         </ul>

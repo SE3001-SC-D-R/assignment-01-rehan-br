@@ -29,7 +29,7 @@ router.route("/add").post(async (req, res) => {
 
 //edit course
 
-router.route("/update/:id").post(async (req, res) =>{
+router.route("/updateCourse/:id").post(async (req, res) =>{
     const {id} = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -37,13 +37,14 @@ router.route("/update/:id").post(async (req, res) =>{
     }
 
     const course = await Course.findOneAndUpdate(
-        {courseId : id},
+        {_id : id},
         {
             ...req.body,
         }
     );
 
     if(course){
+        console.log("Course Updated!");
         res.status(200).json(course);
     }
     else{
@@ -80,6 +81,25 @@ router.route("/viewCourses").get((req, res) => {
             res.json(result);
         }
     });
+});
+
+//find course
+router.route("/findCourse/:id").get(async(req, res) => {
+    const { id } = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Invalid Course ID'});
+    }
+
+    const course = await Course.find({_id : id}, (err, result) => {
+        if(err){
+            res.json(err);
+        } else {
+            console.log("Course Found!");
+            res.json(result);
+        }
+    });
+
 });
 
 export default router;

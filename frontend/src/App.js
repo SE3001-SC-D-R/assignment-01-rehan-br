@@ -5,16 +5,18 @@ import CoursePage from './Components/coursePage';
 import HomePage from './Components/homePage';
 import AddCourse from './Components/addCourse';
 import UpdateCourse from './Components/updateCourse';
+import StudentCourse from './Components/stdCoursePage';
 
 function App() {
 
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<HomePage />}/>
-      <Route path='/viewCourses' element={<CoursePage />}/>
-      <Route path='/addCourse' element={<AddCourse />}/>
-      <Route path='/updateCourse' element={<UpdateCourse/>}/>
+      <Route data-testid = "homepage" path='/' element={<HomePage />}/>
+      <Route path='/admin/viewCourses' element={<CoursePage />}/>
+      <Route path='/admin/addCourse' element={<AddCourse />}/>
+      <Route path='/admin/updateCourse' element={<UpdateCourse/>}/>
+      <Route path='/student/registeredCourses' element={<StudentCourse/>}/>
     </Routes>
     </BrowserRouter>
   );
