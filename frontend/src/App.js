@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route data-testid = "homepage" path='/' element={<HomePage />}/>
+      <Route path='/' element={<HomePage />}/>
       <Route path='/admin/viewCourses' element={<CoursePage />}/>
       <Route path='/admin/addCourse' element={<AddCourse />}/>
       <Route path='/admin/updateCourse' element={<UpdateCourse/>}/>
