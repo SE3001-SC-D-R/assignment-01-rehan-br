@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Navbar from '../Components/Navbar';
 import './addCourse.css';
+import {useLocation} from 'react-router-dom';
 
 function addCourse(){
     const [courseId, setcourseId] = useState("")
@@ -24,7 +25,7 @@ function addCourse(){
         <div className = 'main'>
             <Navbar/>
             <div>
-                <h2>
+                <h2 data-testid = "AddCourse">
                     Add Course
                 </h2>
                 <div className = 'form'>

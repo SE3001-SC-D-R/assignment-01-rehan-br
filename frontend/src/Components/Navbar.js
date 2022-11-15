@@ -14,7 +14,7 @@ function NavBar(){
                         <ul style={{listStyleType : 'none'}}>
                             <NavLink className='navlink' to='/' style={({isActive}) =>
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
-                                <li>
+                                <li data-testid="home">
                                     Home
                                 </li>
                             </NavLink>

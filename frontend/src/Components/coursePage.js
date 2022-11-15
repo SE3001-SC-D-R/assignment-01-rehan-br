@@ -12,13 +12,11 @@ function CoursePage(){
         });
     }, []);
 
-    console.log(listOfCourses);
-
     return(
      <div>
         <NavBar />
         <div classname='mains'>
-            <h2>Course List</h2>
+            <h2 data-testid = "cp">Course List</h2>
             <div classname = 'form'>
                 <label for="chk" aria-hidden="true">Courses</label>
 
