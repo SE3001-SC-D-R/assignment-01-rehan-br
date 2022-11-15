@@ -20,13 +20,13 @@ function NavBar(){
                             </NavLink>
                             <NavLink className='navlink' to='/admin/viewCourses' style={({isActive}) =>
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
-                                <li>
+                                <li data-testid="view">
                                     View Courses
                                 </li>
                             </NavLink>
                             <NavLink className='navlink' to='/admin/addCourse' style={({isActive}) =>
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
-                                <li>
+                                <li data-testid="add">
                                     Add Courses
                                 </li>
                             </NavLink>

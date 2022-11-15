@@ -31,31 +31,31 @@ function addCourse(){
                 <div className = 'form'>
                     <label for='chk' aria-hidden="true">Enter Course Details</label>
                     <tr>
-                        <td>
+                        <td data-testid = "Code">
                             Course Code
                         </td>
                         <td>
-                            <input type="text" name="courseCode" maxLength="10" placeholder="SE3001" onChange = {(event) => {
+                            <input type="text" data-testid = "Code Field" name="courseCode" maxLength="10" placeholder="SE3001" onChange = {(event) => {
                                 setcourseId(event.target.value);
                             }}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td data-testid = "Course">
                             Course Name
                         </td>
                         <td>
-                            <input types="text" name="courseName" maxLength="50" placeholder="SCD" onChange ={(event) => {
+                            <input types="text" data-testid = "Course Field" name="courseName" maxLength="50" placeholder="SCD" onChange ={(event) => {
                                 setname(event.target.value);
                             }}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td data-testid = "Credit">
                             Credit Hours
                         </td>
                         <td>
-                            <input types="text" name="creditHours" maxlength="2" placeholder='3' onChange={(event) => {
+                            <input types="text" data-testid = "Credit Field" name="creditHours" maxlength="2" placeholder='3' onChange={(event) => {
                                 setcredithours(event.target.value);
                             }}/>
                         </td>
