@@ -1,8 +1,6 @@
 import React from 'react';
-import './courseCard.css';
+import './CSS/courseCard.css';
 import {Row, Col} from 'react-bootstrap';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
 
 const CourseCard = ({Courses}) => {
 

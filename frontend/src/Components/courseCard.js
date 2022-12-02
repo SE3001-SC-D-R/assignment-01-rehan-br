@@ -1,9 +1,8 @@
 import React from 'react';
-import './courseCard.css';
+import './CSS/courseCard.css';
 import {Row, Col} from 'react-bootstrap';
 import {AiOutlineDelete} from 'react-icons/ai';
 import axios from 'axios';
-import UpdateCourse from './updateCourse';
 
 const CourseCard = ({Courses}) => {
     const handleDelete = async () => {
@@ -13,14 +12,6 @@ const CourseCard = ({Courses}) => {
         console.log("Course Deleted");
         window.location.reload();
     };
-
-    const updateCourse = async () =>{
-        console.log("Updating..");
-
-        return(
-        <UpdateCourse Courses = {Courses}/>
-        )
-    }
 
     return(
         <div>
@@ -59,10 +50,7 @@ const CourseCard = ({Courses}) => {
                     </Col>
                 </Row>
                 <button className='handleDelete' onClick={handleDelete}>
-                    <AiOutlineDelete></AiOutlineDelete>
-                </button>
-                <button className='handleUpdate' onClick={updateCourse}>
-                    Update
+                    <AiOutlineDelete/>
                 </button>
             </div>
         </div>

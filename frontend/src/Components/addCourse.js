@@ -1,11 +1,10 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import Navbar from '../Components/Navbar';
-import './addCourse.css';
-import {useLocation} from 'react-router-dom';
+import './CSS/addCourse.css';
 
-function addCourse(){
+function AddCourse(){
     const [courseId, setcourseId] = useState("")
     const [name, setname] = useState("")
     const [creditHours, setcredithours] = useState("")
@@ -71,5 +70,5 @@ function addCourse(){
     )
 }
 
-export default addCourse;
+export default AddCourse;
 

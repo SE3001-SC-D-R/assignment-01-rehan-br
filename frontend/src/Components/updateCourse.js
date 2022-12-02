@@ -1,66 +1,63 @@
 import React from 'react';
+import {useState} from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
+import "./CSS/updateCourse.css";
+import Navbar from "../Components/Navbar";
 
-function updateCourse(Course){
-    const [courseId, setcourseId] = useState("")
-    const [name, setname] = useState("")
-    const [creditHours, setcredithours] = useState("")
-    
-    const updating = () => {
-        console.log("Updating in backend..");
-        axios.post(`http://localhost:3001/admin/updateCourse/${Course._id}`, {
-            courseId,
-            name,
-            creditHours
-        })
-        .then((response) => console.log(response.data))
-        .catch((err) => console.log("error: " + err));
-        console.log("Course updated!");
-    };
+function UpdateCourse(){
+    const [name, setName] = useState("");
+    const [courseId, setCourseId] = useState("");
+    const [creditHours, setCreditHours] = useState("");
 
     return(
         <div className = 'main'>
             <Navbar/>
-            <div>
-                <h2>
-                    Update Course
-                </h2>
-                <div className = 'form'>
-                    <label for='chk' aria-hidden="true">Enter Course Details</label>
+            <div className = 'submain'>
+                <h2>Update Course</h2>
+                <input type="text" placeholder="Enter Name" value = {name} onChange = {(e) => setName(e.target.value)}/>
+                <button className ='search' onClick={() => {
+                    axios.get(`http://localhost:3001/admin/findCourse/${name}`)
+                    .then((response) => {
+                        console.log(response.data.courseId);
+                        console.log(response.data.name);
+                        console.log(response.data.creditHours);
+                        setCourseId(response.data.courseId);
+                        setCreditHours(response.data.creditHours);
+                    })
+                    .catch((err) => {
+                        alert("No Course Found");
+                    });
+                }}>Search Course</button>
+                <div className ='form'>
+                    <label for="chk" aria-hidden="true">Updated Course</label>
                     <tr>
                         <td>
-                            Course Code
-                        </td>
-                        <td>
-                            <input type="text" name="courseCode" maxLength="10" placeholder="SE3001" onChange = {(event) => {
-                                setcourseId(event.target.value);
-                            }}/>
+                            <input type="text" value = {name} onChange = {(e) => {setName(e.target.value)}}/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Course Name
-                        </td>
-                        <td>
-                            <input types="text" name="courseName" maxLength="50" placeholder="SCD" onChange ={(event) => {
-                                setname(event.target.value);
-                            }}/>
+                            <input type="text" value = {courseId} onChange = {(e) => {setCourseId(e.target.value)}}/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Credit Hours
-                        </td>
-                        <td>
-                            <input types="text" name="creditHours" maxlength="2" placeholder='3' onChange={(event) => {
-                                setcredithours(event.target.value);
-                            }}/>
+                            <input type="text" value = {creditHours} onChange = {(e) => {setCreditHours(e.target.value)}}/>
                         </td>
                     </tr>
                     <div>
-                        <a href='/admin/updateCourse/'>
-                            <button onClick={updating}></button>
+                        <a href="/admin/viewCourses">
+                            <button className = 'update' onClick={() => {
+                                const data = [name, courseId, creditHours];
+                                axios.put(`http://localhost:3001/admin/updateCourse/${name}`, data)
+                                .then((response) => {
+                                    alert("Student Updated");
+                                    window.location.reload(false);
+                                })
+                                .catch((err) => {
+                                    alert("Error Updating Student");
+                                })
+                            }}>Update</button>
                         </a>
                     </div>
                 </div>
@@ -69,4 +66,4 @@ function updateCourse(Course){
     )
 }
 
-export default updateCourse;
+export default UpdateCourse;

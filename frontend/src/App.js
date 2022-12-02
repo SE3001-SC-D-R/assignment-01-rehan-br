@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import React from 'react';
 import CoursePage from './Components/coursePage';
 import HomePage from './Components/homePage';
-import AddCourse from './Components/addCourse';
+import AddCourse from './Components/addCourse.js';
 import UpdateCourse from './Components/updateCourse';
 import StudentCourse from './Components/stdCoursePage';
 

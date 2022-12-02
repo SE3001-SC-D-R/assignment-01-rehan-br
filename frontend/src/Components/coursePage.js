@@ -1,4 +1,4 @@
-import './coursePage.css';
+import './CSS/coursePage.css';
 import NavBar from './Navbar';
 import { useState , useEffect} from "react";
 import Axios from "axios";

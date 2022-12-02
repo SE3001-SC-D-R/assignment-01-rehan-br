@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.css';
+import './CSS/navbar.css';
 import {NavLink} from "react-router-dom";
 
 function NavBar(){
@@ -7,7 +7,7 @@ function NavBar(){
         <div className="main">
             <div className="navBars">
                 <div className="leftNav">
-                    
+                    UMS
                 </div>
                 <div className="rightNav">
                     <div className="n-Lists">
@@ -28,6 +28,12 @@ function NavBar(){
                             (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
                                 <li data-testid="add">
                                     Add Courses
+                                </li>
+                            </NavLink>
+                            <NavLink className='navlink' to='/admin/updateCourse' style={({isActive}) =>
+                            (isActive ? {color: '#FFA07A'} : {color: 'black'})}>
+                                <li data-testid="update">
+                                    Update Courses
                                 </li>
                             </NavLink>
                         </ul>

@@ -1,5 +1,5 @@
 .courseCard{
-    width: 72rem;
+    width: 86rem;
     height: auto;
     position: absolute;
    
@@ -58,5 +58,15 @@
 }
 
 .handleUpdate{
-  position : relative;
+  position: relative;
+    
+  top: 3px;
+  right: 10px;
+  cursor: pointer;
+  padding: 3px;
+  font-size: 1.2em;
+  font-weight: bolder;
+  color: black;
+  background-color: rgb(112, 149, 194);
+  border: none;
 }

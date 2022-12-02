@@ -1,0 +1,53 @@
+.navlink{
+    text-decoration: none;
+    color : black;
+}
+
+.main{
+    margin: 0;
+    padding: 0;
+}
+
+.navBars{
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-left: 00px;
+    background-color: rgb(153, 181, 227);
+}
+
+.leftNav{
+    margin-top: -1.4rem;
+    flex: 1;
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.rightNav{
+    display: flex;
+    flex: 0;
+    margin-left: 1rem;
+    align-items: center;
+    justify-content:center;
+    font-size: 1.0rem;
+    font-weight: bold;
+}
+
+.n-Lists{
+    flex: 10;
+}
+
+.n-Lists>ul{
+    display: flex;
+    gap: 2rem;
+    margin-right: 4rem;
+}
+
+.n-Lists>ul>li:hover{
+    cursor:pointer;
+    color: var(--orange);
+}

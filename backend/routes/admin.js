@@ -28,28 +28,30 @@ router.route("/add").post(async (req, res) => {
 });
 
 //edit course
-
-router.route("/updateCourse/:id").post(async (req, res) =>{
-    const {id} = req.params;
-
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: "Invalid ID"});
+router.route("/updateCourse/:id").put(async (req, res) => {
+    const{id} = req.params;
+    
+    const newCourse = {
+        courseId: req.body.courseId,
+        name: req.body.name,
+        creditHours: req.body.creditHours
     }
 
-    const course = await Course.findOneAndUpdate(
-        {_id : id},
-        {
-            ...req.body,
+    console.log("Updated Course Attributes Set");
+    console.log("Updating Course..");
+
+    Course.findByIdAndUpdate(id, newCourse, function(err, updatedCourse){
+        if(err){
+            console.log(err);
         }
-    );
-
-    if(course){
-        console.log("Course Updated!");
-        res.status(200).json(course);
-    }
-    else{
-        res.status(404).json({error: "Course not found"});
-    }
+        else{
+            res.json("Course Updated");
+        }
+    })
+    .clone()
+    .catch((err) => {
+        console.log(err);
+    });
 });
 
 //Delete Course
@@ -84,22 +86,18 @@ router.route("/viewCourses").get((req, res) => {
 });
 
 //find course
-router.route("/findCourse/:id").get(async(req, res) => {
-    const { id } = req.params;
-
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Invalid Course ID'});
-    }
-
-    const course = await Course.find({_id : id}, (err, result) => {
-        if(err){
-            res.json(err);
-        } else {
-            console.log("Course Found!");
-            res.json(result);
-        }
+router.route("/findCourse/:name").get(async (req, res) => {
+    const {name} = req.params;
+    Course.findOne({name : name})
+    .then((Course) => {
+        res.json(Course);
+    })
+    .catch((err) => {
+        res.status(404).json({
+            error: err,
+        });
     });
-
 });
+
 
 export default router;

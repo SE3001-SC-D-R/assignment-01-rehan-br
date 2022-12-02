@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import AddCourse from './Components/addCourse';
+import AddCourse from '../Components/addCourse';
 import {BrowserRouter} from 'react-router-dom';
 
 test('Add Course list loaded', () => {
